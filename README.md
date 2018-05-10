@@ -5,13 +5,19 @@ This library is based on library https://github.com/PaulStoffregen/OneWire v2.3.
 
 I adapted this library to the AVR ATMEGA328 microcontroller (used in some arduino platforms).
 
-Due to particular constraints of my project, I have experienced some issues with the OneWire library implementation I found on internet.
+Due to particular constraints of my project, I have experienced some issues with the OneWire libraries I found on internet.
 
 1) The main issue I had concerns timing problems:
 - wrong timing depending on compiler optimization
-- wrong timing with low clock frequency (internal RC oscillator 1Mhz)
+- wrong timing with low clock frequency (cpu clock of 1Mhz)
+2) I want low power consumption for battery powered system.
 
-2) I want to reduce power consumption of the library for battery powered system.
+Solutions I propose:
+1) Time critical operations (write_bit/read_bit/parasitic_power) are written in assembly language to ensure perfect timing whatever the cpu clock frequency, compiler options... However, with the current implementation, cpu clock must be a multiple of 1Mhz, i.e. 1/2/3/.../16Mhz)
+2) OneWire bus is based on pull-up resistors. To reduce power-consumption, an option can be enabled which consists in disabling pull-ups when master drives the line to ground.
+3) The parasitic power option can be used to that only two lines are necessary to communicate with sensors.
+
+I work with Atmel Studio 7.0, avrgcc 5.4.0.
 
 This package is the work of Emmanuel Ruffio. All is licensed under the GNU General Public License, version 3.
 
