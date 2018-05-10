@@ -17,7 +17,14 @@ Solutions I propose:
 2) OneWire bus is based on pull-up resistors. To reduce power-consumption, an option can be enabled which consists in disabling pull-ups when master drives the line to ground.
 3) The parasitic power option can be used to that only two lines are necessary to communicate with sensors.
 
-I work with Atmel Studio 7.0, avrgcc 5.4.0.
+Work in progress:
+This library is in development and may not be reliable. But since most parts come from PaulStoffregen github so that everything should be working fine.
+
+I work with free IDE Atmel Studio 7.0, avrgcc 5.4.0.
+http://www.microchip.com/avr-support/atmel-studio-7
+I'm using MAX31820 temperature sensors:
+https://www.maximintegrated.com/en/products/sensors-and-sensor-interface/MAX31820.html
+
 
 This package is the work of Emmanuel Ruffio. All is licensed under the GNU General Public License, version 3.
 
